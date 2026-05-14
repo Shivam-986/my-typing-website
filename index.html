@@ -3,118 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Document & Typing Services</title>
+    <!-- SEO Optimization -->
+    <meta name="description" content="Legion Services provides fast, professional document typing, note creation, and file conversion in Hindi and English. Message us on WhatsApp to get started!">
+    
+    <title>Legion Document & Typing Services</title>
+    
+    <!-- External Libraries for In-Browser Document Conversion -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <style>
-        /* General Website Styles */
+        /* Modern 3D & General Website Styles */
+        :root {
+            --primary: #2c3e50;
+            --accent: #25D366;
+            --accent-dark: #1da851;
+            --accent-shadow: #15803d;
+            --bg-color: #f0f4f8;
+            --card-shadow: #cbd5e1;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f7f6;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
             color: #333;
             line-height: 1.6;
         }
         
-        /* Header section */
+        /* 3D Header section */
         header {
-            background-color: #2c3e50;
+            background: linear-gradient(135deg, #2c3e50, #1a252f);
             color: #ffffff;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
-            border-bottom: 5px solid #25D366; /* WhatsApp Green Accent */
+            border-bottom: 8px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
         }
         header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 2.8em;
+            text-shadow: 2px 4px 0 rgba(0,0,0,0.3);
+            letter-spacing: 1px;
         }
         header p {
             font-size: 1.2em;
-            margin-top: 10px;
-            opacity: 0.9;
+            margin-top: 15px;
+            opacity: 0.95;
         }
 
         /* Content containers */
         section {
             max-width: 900px;
-            margin: 30px auto;
-            padding: 30px;
+            margin: 40px auto;
+            padding: 35px;
             background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 20px;
+            /* 3D Container Shadow */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05), 0 5px 15px rgba(0,0,0,0.03);
+            border: 1px solid rgba(255,255,255,0.5);
         }
+        
         h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 10px;
+            color: var(--primary);
+            border-bottom: 3px solid #ecf0f1;
+            padding-bottom: 15px;
             margin-top: 0;
+            font-size: 1.8em;
         }
 
-        /* Services Grid layout */
+        /* 3D Services Grid layout */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
+        
+        /* 3D Card Effect */
         .service-card {
-            background: #f8fcf8;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 5px solid #2c3e50;
-            transition: transform 0.2s;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 16px;
+            border: 2px solid #e2e8f0;
+            /* Layered 3D Shadow */
+            box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.1), 0 8px 0 var(--card-shadow);
+            transition: all 0.2s ease-in-out;
+            position: relative;
+            top: 0;
         }
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            /* Lift effect on hover */
+            top: -5px;
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15), 0 13px 0 var(--card-shadow);
         }
         .service-card h3 {
             margin-top: 0;
-            color: #27ae60;
+            color: var(--accent-dark);
+            font-size: 1.3em;
+        }
+
+        /* Custom File Converter Tool Styles */
+        .converter-tool {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 25px;
+            border-radius: 16px;
+            border: 2px dashed #94a3b8;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .converter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .custom-file-input {
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            background: #fff;
+            cursor: pointer;
+            flex-grow: 1;
+            max-width: 250px;
+        }
+        .format-select {
+            padding: 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1em;
+            outline: none;
+            background: #fff;
+            cursor: pointer;
+        }
+        .convert-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #1a252f;
+            transition: all 0.1s ease;
+            position: relative;
+            top: 0;
+        }
+        .convert-btn:active {
+            top: 4px;
+            box-shadow: 0 0 0 #1a252f;
+        }
+        .convert-btn:disabled {
+            background: #94a3b8;
+            box-shadow: 0 4px 0 #64748b;
+            cursor: not-allowed;
+        }
+        
+        /* Result Text Area */
+        .output-container {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .output-textarea {
+            width: 100%;
+            height: 200px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #cbd5e1;
+            background: #fff;
+            font-family: monospace;
+            font-size: 14px;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        .download-text-btn {
+            display: inline-block;
+            margin-top: 10px;
+            background: var(--accent);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Hide elements meant only for logic */
+        .hidden-canvas {
+            display: none; 
         }
 
         /* WhatsApp Action Section */
         .action-section {
             text-align: center;
-            background-color: #e8f5e9;
-            border: 2px dashed #25D366;
+            background: linear-gradient(135deg, #e8f5e9, #f0fdf4);
+            border: 3px dashed var(--accent);
+            transform-style: preserve-3d;
         }
+        
+        /* 3D Push Button */
         .whatsapp-btn {
             display: inline-block;
-            background-color: #25D366;
+            background: linear-gradient(145deg, #28e06d, #22be5c);
             color: #ffffff;
-            padding: 15px 30px;
+            padding: 16px 35px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 1.2em;
-            margin-top: 15px;
-            transition: background-color 0.3s;
-            box-shadow: 0 4px 6px rgba(37, 211, 102, 0.3);
+            font-size: 1.3em;
+            margin-top: 20px;
+            transition: all 0.1s ease;
+            position: relative;
+            top: 0;
+            box-shadow: 0 8px 0 var(--accent-shadow), 0 15px 20px rgba(37, 211, 102, 0.3);
         }
-        .whatsapp-btn:hover {
-            background-color: #1ebe5d;
+        .whatsapp-btn:active {
+            top: 8px;
+            box-shadow: 0 0 0 var(--accent-shadow), 0 5px 10px rgba(37, 211, 102, 0.3);
         }
+        
         .instruction-note {
             font-size: 0.95em;
-            color: #555;
-            margin-top: 15px;
+            color: #475569;
+            margin-top: 25px;
             background: #fff;
             display: inline-block;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
         }
 
         /* Contact Section */
+        .contact-info {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 6px solid var(--primary);
+        }
         .contact-info p {
             font-size: 1.1em;
-            margin: 10px 0;
+            margin: 12px 0;
+            color: #334155;
         }
         .contact-info a {
             color: #2980b9;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.2s;
         }
         .contact-info a:hover {
+            color: #1a5276;
             text-decoration: underline;
         }
     </style>
@@ -122,7 +269,7 @@
 <body>
 
     <header>
-        <h1>Elite Document Typing Services</h1>
+        <h1>Legion Services</h1>
         <p>Professional Hindi & English Typing, Notes, and File Conversion</p>
     </header>
 
@@ -130,45 +277,319 @@
         <h2>Our Services</h2>
         <div class="services-grid">
             <div class="service-card">
-                <h3>⌨️ Typing Services</h3>
+                <h3><span role="img" aria-label="Keyboard">⌨️</span> Typing Services</h3>
                 <p>Fast, accurate, and error-free typing services in both Hindi and English for all your project needs.</p>
             </div>
             <div class="service-card">
-                <h3>📝 Question Making</h3>
+                <h3><span role="img" aria-label="Memo">📝</span> Question Making</h3>
                 <p>Creating structured and customized question papers and quizzes in Hindi and English.</p>
             </div>
             <div class="service-card">
-                <h3>📚 Notes Creation</h3>
+                <h3><span role="img" aria-label="Books">📚</span> Notes Creation</h3>
                 <p>Organized, high-quality note-making from your raw materials, lectures, or source files.</p>
             </div>
             <div class="service-card">
-                <h3>🔄 File Conversion</h3>
+                <h3><span role="img" aria-label="Arrows formatting">🔄</span> File Conversion</h3>
                 <p>Seamlessly convert your files (PDFs to Word, Images to Text, formatting changes, etc.) without losing quality.</p>
             </div>
         </div>
     </section>
 
+    <!-- 1. Quick Image Converter Tool -->
+    <section>
+        <h2>Quick Image Format Converter</h2>
+        <p>Need to quickly change an image's file extension? Use our free browser tool below.</p>
+        
+        <div class="converter-tool">
+            <div class="converter-controls">
+                <input type="file" id="imageInput" class="custom-file-input" accept="image/png, image/jpeg, image/webp">
+                
+                <select id="imageFormatSelect" class="format-select">
+                    <option value="image/jpeg">Convert to JPG</option>
+                    <option value="image/png">Convert to PNG</option>
+                    <option value="image/webp">Convert to WEBP</option>
+                </select>
+                
+                <button id="imageConvertBtn" class="convert-btn" disabled>Convert Image</button>
+            </div>
+            <canvas id="imageCanvasPreview" class="hidden-canvas"></canvas>
+        </div>
+    </section>
+
+    <!-- 2. Document Converter Tool -->
+    <section>
+        <h2>Quick Document Converter Tool</h2>
+        <p>Need a document format change? <strong>Your files are processed locally and never uploaded to any server!</strong></p>
+        <p><em>Note: For highly complex conversions (like Word DOCX with heavy formatting), please send us the file via WhatsApp below.</em></p>
+        
+        <div class="converter-tool">
+            <div class="converter-controls">
+                <select id="docConversionMode" class="format-select">
+                    <option value="pdf-to-text">Extract Text from PDF (.pdf)</option>
+                    <option value="text-to-pdf">Convert Text File to PDF (.txt)</option>
+                    <option value="image-to-pdf">Convert Image/Screenshot to PDF (.png, .jpg)</option>
+                </select>
+
+                <input type="file" id="docUploadFile" class="custom-file-input" accept=".pdf">
+                <button id="docConvertBtn" class="convert-btn" disabled>Convert Document</button>
+            </div>
+
+            <!-- Output area for PDF to Text -->
+            <div id="outputContainer" class="output-container">
+                <h3 style="color: var(--primary); margin-top: 0;">Extracted Text:</h3>
+                <textarea id="textOutput" class="output-textarea" readonly></textarea>
+                <a id="downloadTextLink" class="download-text-btn" href="#" download="extracted_text.txt">⬇️ Download as .txt</a>
+            </div>
+        </div>
+    </section>
+
     <section class="action-section">
-        <h2>Send Us Your Files</h2>
-        <p>Ready to start? Send us a message on WhatsApp. We respond quickly!</p>
+        <h2>Send Us Your Complex Files</h2>
+        <p>Ready to start your typing or complex document conversion project? Send us a message on WhatsApp. We respond quickly!</p>
         
         <a href="https://wa.me/919508486345?text=Hello%20Legion%20Services!%20I%20need%20help%20with%20a%20project.%20I%20will%20attach%20my%20files%20here." target="_blank" class="whatsapp-btn">
-            💬 Chat & Send Files on WhatsApp
+            <span role="img" aria-label="Speech bubble">💬</span> Chat & Send Files on WhatsApp
         </a>
 
         <div class="instruction-note">
-            <strong>How to send files:</strong> Click the button above. Once WhatsApp opens, tap the <strong>📎 Attachment icon</strong> to easily send us your PDFs or Images!
+            <strong>How to send files:</strong> Click the button above. Once WhatsApp opens, tap the <strong><span role="img" aria-label="Paperclip">📎</span> Attachment icon</strong> to easily send us your PDFs or Images!
         </div>
     </section>
 
     <section>
         <h2>Contact Information</h2>
         <div class="contact-info">
-            <p>📞 <strong>Phone / WhatsApp:</strong> +91 9508486345</p>
-            <p>✉️ <strong>Email:</strong> <a href="mailto:legion4881@gmail.com">legion4881@gmail.com</a></p>
-            <p>🕒 <strong>Working Hours:</strong> Available for fast delivery and client support.</p>
+            <p><span role="img" aria-label="Phone">📞</span> <strong>Phone / WhatsApp:</strong> +91 9508486345</p>
+            <p><span role="img" aria-label="Email">✉️</span> <strong>Email:</strong> <a href="mailto:legion4881@gmail.com">legion4881@gmail.com</a></p>
+            <p><span role="img" aria-label="Clock">🕒</span> <strong>Working Hours:</strong> Available for fast delivery and client support.</p>
         </div>
     </section>
 
+    <!-- JavaScript for Converters -->
+    <script>
+        // Setup PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+        // ==========================================
+        // 1. IMAGE CONVERTER LOGIC (PNG/JPG/WEBP)
+        // ==========================================
+        const imageInput = document.getElementById('imageInput');
+        const imageFormatSelect = document.getElementById('imageFormatSelect');
+        const imageConvertBtn = document.getElementById('imageConvertBtn');
+        const imageCanvas = document.getElementById('imageCanvasPreview');
+        const imgCtx = imageCanvas.getContext('2d');
+        
+        let currentImageObj = null;
+        let originalImageName = "converted_image";
+
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                originalImageName = file.name.replace(/\.[^/.]+$/, "");
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = new Image();
+                    img.onload = function() {
+                        currentImageObj = img;
+                        imageConvertBtn.disabled = false;
+                    }
+                    img.src = event.target.result;
+                }
+                reader.readAsDataURL(file);
+            } else {
+                imageConvertBtn.disabled = true;
+                currentImageObj = null;
+            }
+        });
+
+        imageConvertBtn.addEventListener('click', function() {
+            if (!currentImageObj) return;
+
+            imageCanvas.width = currentImageObj.width;
+            imageCanvas.height = currentImageObj.height;
+
+            // Fill white background for transparent PNGs converting to JPG
+            imgCtx.fillStyle = "#FFFFFF";
+            imgCtx.fillRect(0, 0, imageCanvas.width, imageCanvas.height);
+            imgCtx.drawImage(currentImageObj, 0, 0);
+
+            const targetFormat = imageFormatSelect.value;
+            let extension = "jpg";
+            if (targetFormat === "image/png") extension = "png";
+            if (targetFormat === "image/webp") extension = "webp";
+
+            const dataUrl = imageCanvas.toDataURL(targetFormat, 0.9);
+            const link = document.createElement('a');
+            link.download = `${originalImageName}_legion.${extension}`;
+            link.href = dataUrl;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        // ==========================================
+        // 2. DOCUMENT CONVERTER LOGIC (PDF/TXT)
+        // ==========================================
+        const docConversionMode = document.getElementById('docConversionMode');
+        const docUploadFile = document.getElementById('docUploadFile');
+        const docConvertBtn = document.getElementById('docConvertBtn');
+        const outputContainer = document.getElementById('outputContainer');
+        const textOutput = document.getElementById('textOutput');
+        const downloadTextLink = document.getElementById('downloadTextLink');
+
+        let currentDocFile = null;
+
+        docConversionMode.addEventListener('change', function() {
+            if (this.value === 'pdf-to-text') {
+                docUploadFile.accept = '.pdf';
+            } else if (this.value === 'text-to-pdf') {
+                docUploadFile.accept = '.txt';
+            } else if (this.value === 'image-to-pdf') {
+                docUploadFile.accept = 'image/png, image/jpeg, image/webp';
+            }
+            
+            docUploadFile.value = '';
+            docConvertBtn.disabled = true;
+            currentDocFile = null;
+            outputContainer.style.display = 'none';
+            docConvertBtn.innerText = 'Convert Document';
+        });
+
+        docUploadFile.addEventListener('change', function(e) {
+            currentDocFile = e.target.files[0];
+            if (currentDocFile) {
+                docConvertBtn.disabled = false;
+                outputContainer.style.display = 'none';
+            } else {
+                docConvertBtn.disabled = true;
+            }
+        });
+
+        docConvertBtn.addEventListener('click', async function() {
+            if (!currentDocFile) return;
+
+            docConvertBtn.innerText = 'Processing...';
+            docConvertBtn.disabled = true;
+            outputContainer.style.display = 'none';
+
+            const mode = docConversionMode.value;
+
+            try {
+                if (mode === 'pdf-to-text') {
+                    await processPdfToText(currentDocFile);
+                } else if (mode === 'text-to-pdf') {
+                    await processTextToPdf(currentDocFile);
+                } else if (mode === 'image-to-pdf') {
+                    await processImageToPdf(currentDocFile);
+                }
+            } catch (error) {
+                alert("An error occurred during conversion. The file might be corrupted or in an unsupported format.");
+                console.error(error);
+            }
+
+            docConvertBtn.innerText = 'Convert Document';
+            docConvertBtn.disabled = false;
+        });
+
+        // PDF to Text
+        async function processPdfToText(file) {
+            const fileReader = new FileReader();
+            fileReader.onload = async function() {
+                const typedarray = new Uint8Array(this.result);
+                const pdf = await pdfjsLib.getDocument(typedarray).promise;
+                let fullText = '';
+
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const textContent = await page.getTextContent();
+                    const pageText = textContent.items.map(item => item.str).join(' ');
+                    fullText += `--- Page ${i} ---\n` + pageText + '\n\n';
+                }
+
+                textOutput.value = fullText.trim() ? fullText : "No readable text found in this PDF (it might be a scanned image).";
+                outputContainer.style.display = 'block';
+                
+                const blob = new Blob([textOutput.value], { type: 'text/plain' });
+                downloadTextLink.href = URL.createObjectURL(blob);
+                downloadTextLink.download = file.name.replace('.pdf', '') + '_extracted.txt';
+            };
+            fileReader.readAsArrayBuffer(file);
+        }
+
+        // Text to PDF
+        async function processTextToPdf(file) {
+            const fileReader = new FileReader();
+            fileReader.onload = function() {
+                const text = this.result;
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                doc.setFont("helvetica", "normal");
+                doc.setFontSize(12);
+                
+                const lines = doc.splitTextToSize(text, 180);
+                let cursorY = 20; 
+                const pageHeight = doc.internal.pageSize.height;
+                
+                lines.forEach(line => {
+                    if (cursorY > pageHeight - 20) {
+                        doc.addPage();
+                        cursorY = 20;
+                    }
+                    doc.text(line, 15, cursorY);
+                    cursorY += 7; 
+                });
+                
+                const finalName = file.name.replace('.txt', '') + '_legion.pdf';
+                doc.save(finalName);
+            };
+            fileReader.readAsText(file);
+        }
+
+        // Image to PDF
+        async function processImageToPdf(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const imgData = event.target.result;
+                    const img = new Image();
+                    
+                    img.onload = function() {
+                        const { jsPDF } = window.jspdf;
+                        const doc = new jsPDF(); 
+                        
+                        const pageWidth = doc.internal.pageSize.getWidth();
+                        const pageHeight = doc.internal.pageSize.getHeight();
+                        
+                        const imgRatio = img.width / img.height;
+                        const pageRatio = pageWidth / pageHeight;
+                        
+                        let finalWidth, finalHeight;
+                        
+                        if (imgRatio > pageRatio) {
+                            finalWidth = pageWidth;
+                            finalHeight = pageWidth / imgRatio;
+                        } else {
+                            finalHeight = pageHeight;
+                            finalWidth = pageHeight * imgRatio;
+                        }
+                        
+                        const xOffset = (pageWidth - finalWidth) / 2;
+                        const yOffset = (pageHeight - finalHeight) / 2;
+                        
+                        doc.addImage(imgData, 'JPEG', xOffset, yOffset, finalWidth, finalHeight);
+                        
+                        const finalName = file.name.replace(/\.[^/.]+$/, "") + '_legion.pdf';
+                        doc.save(finalName);
+                        resolve();
+                    };
+                    img.onerror = reject;
+                    img.src = imgData;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+    </script>
 </body>
 </html>
