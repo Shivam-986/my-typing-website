@@ -13,110 +13,139 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <style>
-        /* Modern 3D & General Website Styles */
+        /* Modern Clean SaaS Styles */
         :root {
-            --primary: #2c3e50;
-            --accent: #25D366;
-            --accent-dark: #1da851;
-            --accent-shadow: #15803d;
-            --bg-color: #f0f4f8;
-            --card-shadow: #cbd5e1;
+            --primary: #4F46E5;       /* Indigo */
+            --primary-hover: #4338ca;
+            --accent: #10B981;        /* Emerald Green */
+            --accent-hover: #059669;
+            --bg-light: #F3F4F6;      /* Soft Gray Background */
+            --card-bg: #FFFFFF;
+            --text-main: #1F2937;     /* Dark Slate */
+            --text-muted: #6B7280;
+            --border-color: #E5E7EB;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color);
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 20px 20px;
-            color: #333;
-            line-height: 1.6;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.7;
         }
         
-        /* 3D Header section */
+        /* Sleek Modern Header */
         header {
-            background: linear-gradient(135deg, #2c3e50, #1a252f);
+            background: linear-gradient(135deg, #4F46E5, #312E81);
             color: #ffffff;
-            padding: 40px 20px;
+            padding: 70px 20px 90px 20px;
             text-align: center;
-            border-bottom: 8px solid var(--accent);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 10;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.15);
         }
+        
         header h1 {
             margin: 0;
-            font-size: 2.8em;
-            text-shadow: 2px 4px 0 rgba(0,0,0,0.3);
-            letter-spacing: 1px;
+            font-size: 3.2em;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
+        
         header p {
             font-size: 1.2em;
             margin-top: 15px;
-            opacity: 0.95;
+            color: #E0E7FF;
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Content containers */
+        /* Container Sections */
         section {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 35px;
-            background: #ffffff;
+            max-width: 1000px;
+            margin: -40px auto 40px auto; /* Pulls the first section over the header slightly */
+            padding: 40px;
+            background: var(--card-bg);
             border-radius: 20px;
-            /* 3D Container Shadow */
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05), 0 5px 15px rgba(0,0,0,0.03);
-            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Adjust margins for sections after the first one */
+        section ~ section {
+            margin-top: 40px;
         }
         
         h2 {
-            color: var(--primary);
-            border-bottom: 3px solid #ecf0f1;
-            padding-bottom: 15px;
+            color: var(--text-main);
+            font-size: 2em;
+            font-weight: 700;
             margin-top: 0;
-            font-size: 1.8em;
-        }
-
-        /* 3D Services Grid layout */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        /* 3D Card Effect */
-        .service-card {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 16px;
-            border: 2px solid #e2e8f0;
-            /* Layered 3D Shadow */
-            box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.1), 0 8px 0 var(--card-shadow);
-            transition: all 0.2s ease-in-out;
-            position: relative;
-            top: 0;
-        }
-        .service-card:hover {
-            /* Lift effect on hover */
-            top: -5px;
-            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15), 0 13px 0 var(--card-shadow);
-        }
-        .service-card h3 {
-            margin-top: 0;
-            color: var(--accent-dark);
-            font-size: 1.3em;
+        /* Colored dot next to headings */
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary);
+            border-radius: 50%;
         }
 
-        /* Custom File Converter Tool Styles */
-        .converter-tool {
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-            padding: 25px;
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+        
+        /* Clean Flat Cards with Soft Hover */
+        .service-card {
+            background: #FFFFFF;
+            padding: 30px;
             border-radius: 16px;
-            border: 2px dashed #94a3b8;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+            border-color: var(--primary);
+        }
+
+        .service-card h3 {
+            margin-top: 0;
+            color: var(--text-main);
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            margin-bottom: 0;
+        }
+
+        /* Tools Section */
+        .converter-tool {
+            background: #F9FAFB;
+            padding: 30px;
+            border-radius: 16px;
+            border: 2px dashed #D1D5DB;
             text-align: center;
             margin-top: 20px;
         }
+        
         .converter-controls {
             display: flex;
             flex-wrap: wrap;
@@ -125,143 +154,164 @@
             align-items: center;
             margin-top: 20px;
         }
-        .custom-file-input {
-            padding: 10px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            background: #fff;
-            cursor: pointer;
-            flex-grow: 1;
-            max-width: 250px;
-        }
-        .format-select {
-            padding: 12px;
-            border: 2px solid #cbd5e1;
-            border-radius: 8px;
+        
+        .custom-file-input, .format-select {
+            padding: 12px 18px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            background: #FFFFFF;
+            color: var(--text-main);
             font-size: 1em;
-            outline: none;
-            background: #fff;
             cursor: pointer;
-        }
-        .convert-btn {
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 0 #1a252f;
-            transition: all 0.1s ease;
-            position: relative;
-            top: 0;
-        }
-        .convert-btn:active {
-            top: 4px;
-            box-shadow: 0 0 0 #1a252f;
-        }
-        .convert-btn:disabled {
-            background: #94a3b8;
-            box-shadow: 0 4px 0 #64748b;
-            cursor: not-allowed;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
         
-        /* Result Text Area */
+        .custom-file-input:focus, .format-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+        
+        /* Primary Buttons */
+        .convert-btn {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-size: 1.05em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+        
+        .convert-btn:hover:not(:disabled) {
+            background: var(--primary-hover);
+        }
+        
+        .convert-btn:active:not(:disabled) {
+            transform: scale(0.97);
+        }
+        
+        .convert-btn:disabled {
+            background: #9CA3AF;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        
+        /* Output Area */
         .output-container {
             display: none;
-            margin-top: 20px;
+            margin-top: 25px;
             text-align: left;
         }
+        
         .output-textarea {
             width: 100%;
             height: 200px;
             padding: 15px;
-            border-radius: 8px;
-            border: 2px solid #cbd5e1;
-            background: #fff;
-            font-family: monospace;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: #FFFFFF;
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace;
             font-size: 14px;
             resize: vertical;
             box-sizing: border-box;
         }
-        .download-text-btn {
-            display: inline-block;
-            margin-top: 10px;
-            background: var(--accent);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* Hide elements meant only for logic */
-        .hidden-canvas {
-            display: none; 
-        }
-
-        /* WhatsApp Action Section */
-        .action-section {
-            text-align: center;
-            background: linear-gradient(135deg, #e8f5e9, #f0fdf4);
-            border: 3px dashed var(--accent);
-            transform-style: preserve-3d;
+        
+        .output-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
         }
         
-        /* 3D Push Button */
+        .download-text-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background: var(--accent);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        
+        .download-text-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .hidden-canvas { display: none; }
+
+        /* Action / WhatsApp Section */
+        .action-section {
+            text-align: center;
+            background: #ECFDF5; /* Very light emerald */
+            border: 1px solid #A7F3D0;
+        }
+        
+        .action-section h2::before {
+            background-color: var(--accent); /* Change dot to green */
+        }
+        
         .whatsapp-btn {
             display: inline-block;
-            background: linear-gradient(145deg, #28e06d, #22be5c);
+            background: var(--accent);
             color: #ffffff;
             padding: 16px 35px;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.3em;
+            font-weight: 600;
+            font-size: 1.2em;
             margin-top: 20px;
-            transition: all 0.1s ease;
-            position: relative;
-            top: 0;
-            box-shadow: 0 8px 0 var(--accent-shadow), 0 15px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
         }
+        
+        .whatsapp-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(16, 185, 129, 0.3);
+        }
+        
         .whatsapp-btn:active {
-            top: 8px;
-            box-shadow: 0 0 0 var(--accent-shadow), 0 5px 10px rgba(37, 211, 102, 0.3);
+            transform: translateY(0);
         }
         
         .instruction-note {
             font-size: 0.95em;
-            color: #475569;
+            color: #065F46;
             margin-top: 25px;
-            background: #fff;
+            background: #D1FAE5;
             display: inline-block;
             padding: 12px 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
+            border-radius: 50px;
         }
 
         /* Contact Section */
         .contact-info {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 6px solid var(--primary);
+            background: #F8FAFC;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
         }
+        
         .contact-info p {
             font-size: 1.1em;
             margin: 12px 0;
-            color: #334155;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+        
         .contact-info a {
-            color: #2980b9;
+            color: var(--primary);
             text-decoration: none;
-            font-weight: bold;
-            transition: color 0.2s;
+            font-weight: 600;
         }
+        
         .contact-info a:hover {
-            color: #1a5276;
             text-decoration: underline;
         }
     </style>
@@ -290,15 +340,15 @@
             </div>
             <div class="service-card">
                 <h3><span role="img" aria-label="Arrows formatting">🔄</span> File Conversion</h3>
-                <p>Seamlessly convert your files (PDFs to Word, Images to Text, formatting changes, etc.) without losing quality.</p>
+                <p>Seamlessly convert your files (PDFs to Word, Images to Text, formatting changes) without losing quality.</p>
             </div>
         </div>
     </section>
 
     <!-- 1. Quick Image Converter Tool -->
     <section>
-        <h2>Quick Image Format Converter</h2>
-        <p>Need to quickly change an image's file extension? Use our free browser tool below.</p>
+        <h2>Image Format Converter</h2>
+        <p style="color: var(--text-muted); margin-top: -15px; margin-bottom: 20px;">Need to quickly change an image's file extension? Use our free browser tool below.</p>
         
         <div class="converter-tool">
             <div class="converter-controls">
@@ -318,9 +368,10 @@
 
     <!-- 2. Document Converter Tool -->
     <section>
-        <h2>Quick Document Converter Tool</h2>
-        <p>Need a document format change? <strong>Your files are processed locally and never uploaded to any server!</strong></p>
-        <p><em>Note: For highly complex conversions (like Word DOCX with heavy formatting), please send us the file via WhatsApp below.</em></p>
+        <h2>Local Document Converter</h2>
+        <p style="color: var(--text-muted); margin-top: -15px; margin-bottom: 20px;">
+            Need a document format change? <strong>Your files are processed locally and never uploaded to any server!</strong>
+        </p>
         
         <div class="converter-tool">
             <div class="converter-controls">
@@ -331,7 +382,7 @@
                 </select>
 
                 <input type="file" id="docUploadFile" class="custom-file-input" accept=".pdf">
-                <button id="docConvertBtn" class="convert-btn" disabled>Convert Document</button>
+                <button id="docConvertBtn" class="convert-btn" disabled>Process File</button>
             </div>
 
             <!-- Output area for PDF to Text -->
@@ -345,14 +396,15 @@
 
     <section class="action-section">
         <h2>Send Us Your Complex Files</h2>
-        <p>Ready to start your typing or complex document conversion project? Send us a message on WhatsApp. We respond quickly!</p>
+        <p style="color: var(--text-muted); font-size: 1.1em;">Ready to start your typing or complex document conversion project? Send us a message on WhatsApp.</p>
         
         <a href="https://wa.me/919508486345?text=Hello%20Legion%20Services!%20I%20need%20help%20with%20a%20project.%20I%20will%20attach%20my%20files%20here." target="_blank" class="whatsapp-btn">
-            <span role="img" aria-label="Speech bubble">💬</span> Chat & Send Files on WhatsApp
+            <span role="img" aria-label="Speech bubble">💬</span> Chat & Send Files
         </a>
 
+        <br>
         <div class="instruction-note">
-            <strong>How to send files:</strong> Click the button above. Once WhatsApp opens, tap the <strong><span role="img" aria-label="Paperclip">📎</span> Attachment icon</strong> to easily send us your PDFs or Images!
+            <strong>Tip:</strong> Click the button above. Once WhatsApp opens, tap the <strong>📎 Attachment icon</strong> to easily send your PDFs or Images!
         </div>
     </section>
 
@@ -371,7 +423,7 @@
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
 
         // ==========================================
-        // 1. IMAGE CONVERTER LOGIC (PNG/JPG/WEBP)
+        // 1. IMAGE CONVERTER LOGIC
         // ==========================================
         const imageInput = document.getElementById('imageInput');
         const imageFormatSelect = document.getElementById('imageFormatSelect');
@@ -408,7 +460,6 @@
             imageCanvas.width = currentImageObj.width;
             imageCanvas.height = currentImageObj.height;
 
-            // Fill white background for transparent PNGs converting to JPG
             imgCtx.fillStyle = "#FFFFFF";
             imgCtx.fillRect(0, 0, imageCanvas.width, imageCanvas.height);
             imgCtx.drawImage(currentImageObj, 0, 0);
@@ -428,7 +479,7 @@
         });
 
         // ==========================================
-        // 2. DOCUMENT CONVERTER LOGIC (PDF/TXT)
+        // 2. DOCUMENT CONVERTER LOGIC
         // ==========================================
         const docConversionMode = document.getElementById('docConversionMode');
         const docUploadFile = document.getElementById('docUploadFile');
@@ -452,7 +503,7 @@
             docConvertBtn.disabled = true;
             currentDocFile = null;
             outputContainer.style.display = 'none';
-            docConvertBtn.innerText = 'Convert Document';
+            docConvertBtn.innerText = 'Process File';
         });
 
         docUploadFile.addEventListener('change', function(e) {
@@ -487,7 +538,7 @@
                 console.error(error);
             }
 
-            docConvertBtn.innerText = 'Convert Document';
+            docConvertBtn.innerText = 'Process File';
             docConvertBtn.disabled = false;
         });
 
